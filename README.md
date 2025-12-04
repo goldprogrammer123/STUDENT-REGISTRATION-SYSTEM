@@ -11,6 +11,7 @@ Navigation links to login and register
 
 Clean UI for first-time users
 
+
 2. Login Page
 
 Secure login for administrators
@@ -18,6 +19,7 @@ Secure login for administrators
 Email + password authentication
 
 Error handling and validation
+
 
 3. Registration Page
 
@@ -27,6 +29,7 @@ Form validation
 
 Stores user credentials securely
 
+
 4. Dashboard Page
 
 Overview of system statistics
@@ -34,6 +37,7 @@ Overview of system statistics
 Quick access to important modules
 
 Admin profile & actions
+
 
 5. Register Student Page
 
@@ -43,6 +47,7 @@ Upload documents/photos (optional)
 
 Saves data to the backend API
 
+
 6. View Student List Page
 
 Table of all registered students
@@ -51,6 +56,7 @@ Search, filter or sort (future feature)
 
 Edit & delete student records
 
+
 7. Report Page
 
 Generate simple student reports
@@ -58,6 +64,7 @@ Generate simple student reports
 Summary statistics
 
 Printable/downloadable options
+
 
 🛠 Technologies Used
 Frontend
@@ -70,6 +77,7 @@ CSS
 
 Axios (for API calls)
 
+
 Backend
 
 Django
@@ -80,10 +88,14 @@ SQLite/PostgreSQL (optional)
 
 📁 Project Structure
 STUDENT-REGISTRATION-SYSTEM/
+
 │
 ├── frontend/
+
 │   ├── public/
+
 │   ├── src/
+
 │   │   ├── components/
 │   │   ├── pages/
 │   │   │   ├── LandingPage.jsx
@@ -134,7 +146,9 @@ pip install -r requirements.txt
 
 Run backend server
 python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
+
 
 🤝 Collaboration Rules (Git Workflow)
 
