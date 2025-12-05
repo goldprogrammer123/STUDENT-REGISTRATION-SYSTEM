@@ -1,3 +1,4 @@
+//This new file is created to handle student registration including guardian details.
 import { useState } from "react";
 
 function RegisterStudent() {
