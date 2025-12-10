@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import generics
-from .serializers import CountFemaleStudentsSerializer, CountMaleStudentsSerializer, CountStudentsSerializer, StudentDetailSerializer, StudentSerializer
-from .models import Students
+from .serializers import CountFemaleStudentsSerializer, CountMaleStudentsSerializer, CountStudentsSerializer, StudentDetailSerializer, StudentSerializer,ProfileCreateSerializer,ProfileDetailSerializer
+from .models import Students,StudentProfile
 
 # Create your views here.
 
@@ -66,3 +66,20 @@ class CountStudentsView(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         count = Students.objects.count()
         return HttpResponse(count)              
+    
+    
+    
+class StudentProfileCreateView(generics.ListCreateAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class =ProfileCreateSerializer
+    
+    
+    
+class StudentProfileDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class =ProfileDetailSerializer
+    # def get_queryset(self):
+    #     student_id=self.kwargs['pk']
+    #     student=Students.objects.get(pk=student_id)
+    #     return StudentProfile.objects.filter(student=student)
+    

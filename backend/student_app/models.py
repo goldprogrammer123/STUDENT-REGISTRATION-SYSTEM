@@ -54,8 +54,8 @@ class Students(models.Model):
     
 
 class StudentProfile(models.Model):
-    image = models.ImageField(upload_to='images/',)
-    name =models.OneToOneField(Students,on_delete=models.CASCADE,)
+    image = models.ImageField(upload_to='profile/',)
+    student =models.OneToOneField(Students,on_delete=models.CASCADE,)
 
     def __str__(self):
         return self.name

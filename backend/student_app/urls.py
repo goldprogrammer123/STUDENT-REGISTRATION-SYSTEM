@@ -9,4 +9,8 @@ urlpatterns = [
     path('count-female/', views.CountFemaleStudentsView.as_view(), name='count-female-students'),
     path('count-male/', views.CountMaleStudentsView.as_view(), name='count-male-students'),
     path('count/', views.CountStudentsView.as_view(), name='count-students'),
+    
+    path('profile-create/', views.StudentProfileCreateView.as_view(), name='students-profile'),
+    path('profile-detail/<int:pk>/', views.StudentProfileDetailView.as_view(), name='students-profile-info'),
+    
 ]
