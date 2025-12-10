@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+
+
+
+
 DENDER_CHOICES = [
     ('Male', 'Male'),
     ('Female', 'Female'),
@@ -39,6 +43,19 @@ class Students(models.Model):
     guardian_name = models.CharField(max_length=60)
     guardian_contact = models.CharField(max_length=15)
     is_active = models.BooleanField(default=True)
+    
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+    
+    
+    
+    
+
+class StudentProfile(models.Model):
+    image = models.ImageField(upload_to='images/',)
+    name =models.OneToOneField(Students,on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.name
