@@ -87,7 +87,7 @@ function RegisterStudent() {
 
       <h2>Guardian Details</h2>
       <input type="text" name="guardianName" value={student.guardianName} onChange={handleChange} placeholder="Full Name" required />
-      <input type="text" name="guardianRelation" value={student.guardianRelation} onChange={handleChange} placeholder="Relationship (Father/Mother/Guardian)" required />
+      <input type="text" name="guardianRelation" value={student.guardianRelation} onChange={handleChange} placeholder="Relationship (Father/Mother/sister/brother/Guardian)" required />
       <input type="tel" name="guardianPhone" value={student.guardianPhone} onChange={handleChange} placeholder="Phone Number" required />
       <input type="email" name="guardianEmail" value={student.guardianEmail} onChange={handleChange} placeholder="Email" />
       <input type="text" name="guardianAddress" value={student.guardianAddress} onChange={handleChange} placeholder="Address" />
