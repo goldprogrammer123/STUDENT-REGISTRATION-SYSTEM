@@ -1,0 +1,87 @@
+.dashboard-header {
+  background: linear-gradient(135deg, #684949 0%, #c3a8de 100%);
+  color: rgb(78, 59, 59);
+  padding: 25px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= TITLE ================= */
+.dashboard-header h1 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ================= HEADER INFO ================= */
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  opacity: 0.9;
+  flex-wrap: wrap;
+}
+
+/* ================= ADMIN BADGE ================= */
+.admin-info {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 6px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ================= DATE ================= */
+.current-date {
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* ================= LARGE SCREENS ================= */
+@media (min-width: 1200px) {
+  .dashboard-header {
+    padding: 30px 40px;
+  }
+}
+
+/* ================= TABLETS ================= */
+@media (max-width: 992px) {
+  .dashboard-header {
+    padding: 20px 24px;
+  }
+
+  .header-info {
+    gap: 12px;
+  }
+}
+
+/* ================= PHONES ================= */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 16px 20px;
+  }
+
+  .header-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+  .dashboard-header {
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+
+  .admin-info {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+
+  .current-date {
+    font-size: 0.8rem;
+  }
+}

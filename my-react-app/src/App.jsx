@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
+
+import Sidebar from './pages/Sidebar/Sidebar.jsx';
+import Header from './component/Header/Header.jsx';
+import Dashboard from './pages/Dashboard/Dashboard.jsx';
+// or DashboardCards if that is your actual component
+// import DashboardCards from './pages/Dashboard/DashboardCards';
 
 function App() {
-  const [count, setCount] = useState(0)
+  /* ===============================
+     Sidebar collapse state
+  =============================== */
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
+  const handleSidebarToggle = (collapsed) => {
+    setIsSidebarCollapsed(collapsed);
+  };
+
+  /* ===============================
+     Dashboard data state
+  =============================== */
+  const [dashboardData, setDashboardData] = useState({
+    totalStudents: 0,
+    maleStudents: 0,
+    femaleStudents: 0,
+    activeStudents: 0
+  });
+
+  /* ===============================
+     Simulate API call
+  =============================== */
+  useEffect(() => {
+    const mockData = {
+      totalStudents: 245,
+      maleStudents: 130,
+      femaleStudents: 115,
+      activeStudents: 230
+    };
+
+    setDashboardData(mockData);
+  }, []);
+
+  /* ===============================
+     Render
+  =============================== */
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <Sidebar onToggle={handleSidebarToggle} />
+
+      <div
+        className={`main-content ${
+          isSidebarCollapsed ? 'collapsed-sidebar' : ''
+        }`}
+      >
+        <Header />
+        <Dashboard data={dashboardData} />
+        {/* or <DashboardCards data={dashboardData} /> */}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
