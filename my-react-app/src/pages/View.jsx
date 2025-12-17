@@ -1,43 +1,69 @@
-import { useState } from "react";
-import "./app.css";
-//if necessary to add another course filter, just update the options in the select dropdown and the filtering logic will handle it automatically
-export default function StudentsPage() {
-  const studentsData = [
+import { useState, useMemo } from "react";
+import "./StudentsPage.css";
+
+const studentsData = [
     { id: 1, name: "John Doe", course: "Computer Science", year: "2023", gender: "Male", status: "Active" },
     { id: 2, name: "Asha Ali", course: "Information Technology", year: "2022", gender: "Female", status: "Graduated" },
     { id: 3, name: "Michael John", course: "Business", year: "2023", gender: "Male", status: "Active" },
     { id: 4, name: "Neema Paul", course: "Computer Science", year: "2021", gender: "Female", status: "Graduated" },
+    { id: 5, name: "Peter Lucas", course: "Business", year: "2022", gender: "Male", status: "Active" },
   ];
-//state to hold filter values according to course, year, and gender
-  const [filters, setFilters] = useState({ course: "", year: "", gender: "" });
+export default function StudentsPage() {
+    const [search, setSearch] = useState("");
+    const [filters, setFilters] = useState({ course: "", year: "", gender: "" });
 
-  const filteredStudents = studentsData.filter((student) => {
-    return (
-      (filters.course === "" || student.course === filters.course) &&
-      (filters.year === "" || student.year === filters.year) &&
-      (filters.gender === "" || student.gender === filters.gender)
-    );
-  });
+    const filteredStudents = useMemo(() => {
+    return studentsData.filter((s) => {
+      const matchSearch = s.name.toLowerCase().includes(search.toLowerCase());
+      const matchCourse = filters.course === "" || s.course === filters.course;
+      const matchYear = filters.year === "" || s.year === filters.year;
+      const matchGender = filters.gender === "" || s.gender === filters.gender;
+      return matchSearch && matchCourse && matchYear && matchGender;
+    });
+  }, [search, filters,]);
 
-  const totalStudents = studentsData.length;
-  const activeStudents = studentsData.filter((s) => s.status === "Active").length;
-  const maleStudents = studentsData.filter((s) => s.gender === "Male").length;
-  const femaleStudents = studentsData.filter((s) => s.gender === "Female").length;
+  const stats = useMemo(() => {
+    return {
+      total: filteredStudents.length,
+      active: filteredStudents.filter((s) => s.status === "Active").length,
+      male: filteredStudents.filter((s) => s.gender === "Male").length,
+      female: filteredStudents.filter((s) => s.gender === "Female").length,
+    };
+  }, [filteredStudents]);
 
   return (
     <div className="students-page">
-      <h1>Students Overview</h1>
+      <h1 className="page-title">Students Overview</h1>
 
-      {/* STATS CARDS */}
-      <div className="stats-cards">
-        <div className="card">Total Students <span>{totalStudents}</span></div>
-        <div className="card">Active Students <span>{activeStudents}</span></div>
-        <div className="card">Male Students <span>{maleStudents}</span></div>
-        <div className="card">Female Students <span>{femaleStudents}</span></div>
+      {/* STATS */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <p>Total Students</p>
+          <h2>{stats.total}</h2>
+        </div>
+        <div className="stat-card">
+          <p>Active Students</p>
+          <h2>{stats.active}</h2>
+        </div>
+        <div className="stat-card">
+          <p>Male Students</p>
+          <h2>{stats.male}</h2>
+        </div>
+        <div className="stat-card">
+          <p>Female Students</p>
+          <h2>{stats.female}</h2>
+        </div>
       </div>
 
-      {/* FILTER SECTION */}
+      {/* FILTERS */}
       <div className="filters">
+        <input
+          type="text"
+          placeholder="Search by student name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         <select onChange={(e) => setFilters({ ...filters, course: e.target.value })}>
           <option value="">All Courses</option>
           <option value="Computer Science">Computer Science</option>
@@ -59,29 +85,37 @@ export default function StudentsPage() {
         </select>
       </div>
 
-      {/* STUDENTS LIST */}
-      <table className="students-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Year</th>
-            <th>Gender</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredStudents.map((student) => (
-            <tr key={student.id}>
-              <td>{student.name}</td>
-              <td>{student.course}</td>
-              <td>{student.year}</td>
-              <td>{student.gender}</td>
-              <td>{student.status}</td>
+      {/* TABLE */}
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Year</th>
+              <th>Gender</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredStudents.length === 0 ? (
+              <tr>
+                <td colSpan="5" className="no-data">No students found</td>
+              </tr>
+            ) : (
+              filteredStudents.map((s) => (
+                <tr key={s.id}>
+                  <td>{s.name}</td>
+                  <td>{s.course}</td>
+                  <td>{s.year}</td>
+                  <td>{s.gender}</td>
+                  <td className={s.status === "Active" ? "active" : "graduated"}>{s.status}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
