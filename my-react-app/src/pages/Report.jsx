@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import "./AnnualReportPage.css";
+import React from "react";
 
 // Dummy data (later replace with backend API)
 const studentsData = [
