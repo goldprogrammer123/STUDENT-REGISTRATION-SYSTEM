@@ -1,0 +1,278 @@
+/* ================= ROOT BACKGROUND ================= */
+.dashboard-container {
+  padding: 20px;
+  min-height: 100vh;
+  background: #f5f7fa; /* WHITE BACKGROUND */
+  font-family: 'Inter', sans-serif;
+}
+
+/* ================= GLASS BASE ================= */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --blur: blur(16px);
+}
+
+/* ================= WELCOME CARD ================= */
+.dashboard-welcome {
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  animation: slideFade 0.8s ease forwards;
+}
+
+.dashboard-welcome h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.dashboard-welcome p {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  color: #555;
+}
+
+/* ================= LOADING ================= */
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #333;
+}
+
+.spinner {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 4px solid #ddd;
+  border-top: 4px solid #333;
+  animation: spin 1s linear infinite;
+}
+
+/* ================= GRID ================= */
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ================= MAIN CARDS ================= */
+.main-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.dashboard-card {
+  position: relative;
+  padding: 25px;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  animation: floatIn 0.7s ease forwards;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= CARD HEADER ================= */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+.card-change {
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+/* ================= CARD CONTENT ================= */
+.card-content h3 {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-value {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: #111;
+}
+
+/* ================= SECONDARY CARDS ================= */
+.secondary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.secondary-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.card-icon-small {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+.card-value-small {
+  color: #111;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-weight: 600;
+}
+
+.card-content-small h4 {
+  color: #444;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+/* ================= ACTIONS ================= */
+.dashboard-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.quick-actions,
+.recent-activity {
+  padding: 25px;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.quick-actions h3,
+.recent-activity h3 {
+  color: #111;
+  margin-bottom: 20px;
+}
+
+/* ================= BUTTONS ================= */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.action-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  transition: all 0.4s ease;
+}
+
+.action-btn.secondary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.action-btn.tertiary {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+.action-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= ACTIVITY ================= */
+.activity-list li {
+  padding: 12px 0;
+  color: #444;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideFade {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+@media (max-width: 1200px) {
+  .main-cards, .secondary-cards, .dashboard-actions {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-container { padding: 15px; }
+  .dashboard-welcome { padding: 20px; }
+  .card-value { font-size: 2rem; }
+  .card-value-small { font-size: 1.4rem; }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container { padding: 10px; }
+  .dashboard-grid { gap: 20px; }
+  .main-cards, .secondary-cards, .dashboard-actions { grid-template-columns: 1fr; }
+  .card-value { font-size: 1.6rem; }
+  .card-value-small { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .dashboard-welcome { padding: 15px; border-radius: 14px; }
+  .dashboard-card, .secondary-card { padding: 15px; border-radius: 14px; }
+  .card-icon, .card-icon-small { width: 45px; height: 45px; font-size: 1.4rem; }
+  .card-change { padding: 4px 10px; font-size: 0.75rem; }
+  .card-value { font-size: 1.4rem; }
+  .card-value-small { font-size: 1rem; }
+}
