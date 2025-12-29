@@ -1,14 +1,13 @@
 /* ================= ROOT BACKGROUND ================= */
 .dashboard-container {
   padding: 20px;
-  min-height: 100vh;
-  background: #f5f7fa; /* WHITE BACKGROUND */
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #a2c1dd;
 }
 
 /* ================= GLASS BASE ================= */
 :root {
-  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg: rgba(255, 255, 255, 0.842);
   --glass-border: rgba(0, 0, 0, 0.08);
   --glass-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   --blur: blur(16px);
@@ -16,25 +15,19 @@
 
 /* ================= WELCOME CARD ================= */
 .dashboard-welcome {
+  text-align: center;
   margin-bottom: 30px;
-  padding: 25px;
-  border-radius: 18px;
-  background: var(--glass-bg);
-  backdrop-filter: var(--blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  animation: slideFade 0.8s ease forwards;
 }
 
 .dashboard-welcome h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  color: #111;
-  margin-bottom: 8px;
+  font-size: 32px;
+  color: #2c273f;
+  margin-bottom: 10px;
 }
 
 .dashboard-welcome p {
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
-  color: #555;
+  font-size: 16px;
+  color: #666;
 }
 
 /* ================= LOADING ================= */
@@ -58,9 +51,9 @@
 
 /* ================= GRID ================= */
 .dashboard-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 /* ================= MAIN CARDS ================= */
@@ -71,28 +64,24 @@
 }
 
 .dashboard-card {
-  position: relative;
-  padding: 25px;
-  border-radius: 20px;
-  background: var(--glass-bg);
-  backdrop-filter: var(--blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  overflow: hidden;
-  animation: floatIn 0.7s ease forwards;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  background-color: #e2eeed;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dashboard-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* ================= CARD HEADER ================= */
 .card-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
 }
 
 .card-icon {
@@ -102,31 +91,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 30px;
+  color: #007bff;
   background: rgba(0, 0, 0, 0.05);
-  color: #111;
 }
 
 .card-change {
-  font-size: 0.85rem;
+  font-size: 14px;
   padding: 6px 14px;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.05);
-  color: #111;
+  color: #28a745;
 }
 
 /* ================= CARD CONTENT ================= */
 .card-content h3 {
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 20px;
+  margin: 15px 0 5px;
+  color: #333;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .card-value {
-  font-size: clamp(1.8rem, 3vw, 2.3rem);
-  font-weight: 700;
-  color: #111;
+  font-size: 28px;
+  font-weight: bold;
+  color: #444;
 }
 
 /* ================= SECONDARY CARDS ================= */
@@ -175,6 +165,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  margin-top: 5px;
+  color: #991e1e;
 }
 
 .quick-actions,
@@ -185,12 +177,15 @@
   backdrop-filter: var(--blur);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
+  text-align: center;
+  background-color: rgb(95, 190, 167);
 }
 
 .quick-actions h3,
 .recent-activity h3 {
   color: #111;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 22px;
 }
 
 /* ================= BUTTONS ================= */
@@ -201,34 +196,39 @@
 }
 
 .action-btn {
-  padding: 14px;
-  border-radius: 12px;
+  background-color: #007bff;
+  color: white;
   border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  color: #ffffff;
-  background: linear-gradient(135deg, #00f2fe, #4facfe);
-  transition: all 0.4s ease;
+  margin: 10px;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
 }
 
 .action-btn.secondary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-color: #28a745;
 }
 
 .action-btn.tertiary {
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background-color: #ffc107;
 }
 
 .action-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  background-color: #0056b3;
 }
 
 /* ================= ACTIVITY ================= */
+.activity-list {
+  list-style: none;
+  padding: 0;
+}
+
 .activity-list li {
-  padding: 12px 0;
-  color: #444;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
 }
 
 /* ================= ANIMATIONS ================= */

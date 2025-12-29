@@ -30,19 +30,34 @@ function Dashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      try {
+        const totalResponse = await fetch(
+          "http://127.0.0.1:8000/students/count/"
+        );
+        const maleResponse = await fetch(
+          "http://127.0.0.1:8000/students/count-male/"
+        );
+        const femaleResponse = await fetch(
+          "http://127.0.0.1:8000/students/count-female/"
+        );
 
-      setStats({
-        totalStudents: 1245,
-        maleStudents: 680,
-        femaleStudents: 565,
-        activeStudents: 1180,
-        newThisMonth: 45,
-        graduatingThisYear: 320,
-        internationalStudents: 89,
-        averageAttendance: 94.5,
-      });
+        const totalStudents = await totalResponse.json();
+        const maleStudents = await maleResponse.json();
+        const femaleStudents = await femaleResponse.json();
 
+        setStats({
+          totalStudents: totalStudents.count,
+          maleStudents: maleStudents.count,
+          femaleStudents: femaleStudents.count,
+          activeStudents: totalStudents.count - 50, // Example calculation
+          newThisMonth: 45, // Mock data for now
+          graduatingThisYear: 320, // Mock data for now
+          internationalStudents: 89, // Mock data for now
+          averageAttendance: 94.5, // Mock data for now
+        });
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+      }
       setLoading(false);
     };
 
