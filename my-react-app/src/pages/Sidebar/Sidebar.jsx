@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Sidebar.css';
 import { 
   FaTachometerAlt, 
@@ -14,10 +15,11 @@ import {
 function Sidebar({ onToggle }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeMenu, setActiveMenu] = useState('dashboard');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const menuItems = [
     { id: 'dashboard', icon: <FaTachometerAlt />, label: 'Dashboard' },
-    { id: 'register', icon: <FaUserPlus />, label: 'Register Student' },
+    { id: 'register', icon: <FaUserPlus />, label: 'Register' },
     { id: 'students', icon: <FaUsers />, label: 'View Students' },
     { id: 'reports', icon: <FaChartBar />, label: 'Reports' },
     { id: 'settings', icon: <FaCog />, label: 'Settings' },
@@ -25,7 +27,7 @@ function Sidebar({ onToggle }) {
 
   const handleMenuClick = (menuId) => {
     setActiveMenu(menuId);
-    console.log(`Navigating to ${menuId}`);
+    navigate(`/${menuId}`); // Navigate to the corresponding route
   };
 
   const handleLogout = () => {
@@ -42,6 +44,8 @@ function Sidebar({ onToggle }) {
       onToggle(newCollapsedState);
     }
   };
+
+  console.log("Sidebar component is rendering");
 
   return (
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
