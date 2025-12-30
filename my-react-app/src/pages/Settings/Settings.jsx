@@ -69,38 +69,6 @@ const Settings = () => {
         </p>
       </div>
 
-      {/* Profile Settings */}
-      <div className="settings-section">
-        <h3>Profile Settings</h3>
-        <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={profile.username}
-            onChange={handleProfileChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={profile.email}
-            onChange={handleProfileChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={profile.phone}
-            onChange={handleProfileChange}
-          />
-        </div>
-      </div>
-
       {/* Application Preferences */}
       <div className="settings-section">
         <h3>Application Preferences</h3>
