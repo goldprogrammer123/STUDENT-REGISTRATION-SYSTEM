@@ -4,9 +4,10 @@ import './App.css';
 
 import Sidebar from './pages/Sidebar/Sidebar.jsx';
 import Header from './component/Header/Header.jsx';
+import Navbar from './component/Navbar/Navbar.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Register from './pages/Register/Register.jsx';
-import Students from './pages/Students.jsx';
+import Students from './pages/Students/Students.jsx';
 import Report from './pages/Report/Report.jsx';
 import Settings from './pages/Settings/Settings.jsx';
 import Login from './pages/Login/Login.jsx'; // Import Login page

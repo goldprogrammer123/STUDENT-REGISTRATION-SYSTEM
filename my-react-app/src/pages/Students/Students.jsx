@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import Navbar from "../components/Navbar.jsx";
+import Navbar from "../../component/Navbar/Navbar.jsx";
 import "./Students.css";
 
 const Students = () => {
